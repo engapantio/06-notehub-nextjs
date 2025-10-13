@@ -38,7 +38,7 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
   const newNote = useMutation({
     mutationFn: (note: HandleNewNoteProps) => createNote(note),
     onSuccess: () => {
-      toast.success('Note added!', { position: 'bottom-left' });
+      toast.success('Note added!', { position: 'bottom-right' });
       queryClient.invalidateQueries({ queryKey: ['notes'] });
       onCancel();
     },

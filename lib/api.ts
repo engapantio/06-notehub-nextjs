@@ -3,32 +3,6 @@
 import axios from 'axios';
 import { Note } from '../types/note';
 
-// export type Note = {
-//   id: string;
-//   title: string;
-//   content: string;
-//   tag: string;
-//   userId: string;
-//   createdAt: string;
-//   updatedAt: string;
-// };
-
-// export type NoteListResponse = {
-//   notes: Note[];
-//   totalPages: number;
-// };
-
-// export const getNotes = async () => {
-//   await delay(2000);
-//   const res = await axios.get<NoteListResponse>('/notes');
-//   return res.data;
-// };
-
-export const getSingleNote = async (id: string) => {
-  const res = await axios.get<Note>(`/notes/${id}`);
-  return res.data;
-};
-
 interface FetchNotesResponse {
   notes: Note[];
   totalPages: number;
@@ -64,5 +38,10 @@ export const createNote = async (newNote: CreateNoteProps): Promise<Note> => {
 
 export const deleteNote = async (id: Note['id']): Promise<Note> => {
   const response = await axios.delete<Note>(`notes/${id}`);
+  return response.data;
+};
+
+export const fetchNoteById = async (id: string) => {
+  const response = await axios.get<Note>(`/notes/${id}`);
   return response.data;
 };
