@@ -32,7 +32,6 @@ export const fetchNotes = async (
 
 export const createNote = async (newNote: CreateNoteProps): Promise<Note> => {
   const response = await axios.post<Note>('/notes', newNote);
-
   return response.data;
 };
 
@@ -41,7 +40,7 @@ export const deleteNote = async (id: Note['id']): Promise<Note> => {
   return response.data;
 };
 
-export const fetchNoteById = async (id: string) => {
+export const fetchNoteById = async (id: Note['id']): Promise<Note> => {
   const response = await axios.get<Note>(`/notes/${id}`);
   return response.data;
 };

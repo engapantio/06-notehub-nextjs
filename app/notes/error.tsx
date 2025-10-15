@@ -2,10 +2,10 @@
 
 'use client';
 
-type Props = {
+interface Props {
   error: Error;
   reset: () => void;
-};
+}
 
 const Error = ({ error, reset }: Props) => {
   return (

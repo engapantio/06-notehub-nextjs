@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
 import css from './NoteDetails.module.css';
 import { fetchNoteById } from '@/lib/api';
+import Error from './error';
 
 const NoteDetailsClient = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,7 +20,8 @@ const NoteDetailsClient = () => {
   });
 
   if (isLoading) return <p>Loading, please wait...</p>;
-  if (error || !note) return <p>Something went wrong.</p>;
+  if (error) return <Error error={error} />;
+  if (!note) return <p>Something went wrong.</p>;
 
   const formattedDate = note.updatedAt
     ? `Updated at: ${note.updatedAt}`

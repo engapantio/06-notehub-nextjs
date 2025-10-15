@@ -27,13 +27,3 @@ const NoteDetails = async ({ params }: Props) => {
 };
 
 export default NoteDetails;
-
-//   return (
-//     <div>
-//       <h2>{note.title}</h2>
-//       <p>{note.content}</p>
-//       <button>Edit</button>
-//       <p>{formattedDate}</p>
-//     </div>
-//   );
-// };
