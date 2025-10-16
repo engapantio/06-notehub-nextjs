@@ -31,13 +31,13 @@ const Notes = async () => {
   const page = 1;
 
   await queryClient.prefetchQuery({
-    queryKey: ['note'],
+    queryKey: ['notes'],
     queryFn: () => fetchNotes(search, page, perPage),
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient />;
+      <NotesClient />
     </HydrationBoundary>
   );
 };
