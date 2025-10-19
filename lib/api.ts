@@ -21,10 +21,11 @@ axios.defaults.headers.common['Authorization'] =
 export const fetchNotes = async (
   search: string,
   page: number,
-  perPage: number
+  perPage: number = 12
 ): Promise<FetchNotesResponse> => {
+  const s = search ? `search=${search}&` : '';
   const response = await axios.get<FetchNotesResponse>(
-    `/notes?search=${search}&page=${page}&perPage=${perPage}`
+    `/notes?${s}page=${page}&perPage=${perPage}`
   );
 
   return response.data;

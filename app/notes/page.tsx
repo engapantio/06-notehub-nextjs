@@ -26,13 +26,12 @@ import NotesClient from './Notes.client';
 const Notes = async () => {
   const queryClient = new QueryClient();
 
-  const perPage = 12;
   const search = '';
   const page = 1;
 
   await queryClient.prefetchQuery({
     queryKey: ['notes'],
-    queryFn: () => fetchNotes(search, page, perPage),
+    queryFn: () => fetchNotes(search, page),
   });
 
   return (
